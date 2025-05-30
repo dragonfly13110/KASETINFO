@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway # ใช้ Netlify's Git Gateway
+  branch: main # หรือ branch ที่คุณใช้เก็บ content
+  # commit_messages:
+  #   create: 'Create {{collection}} “{{slug}}”'
+  #   update: 'Update {{collection}} “{{slug}}”'
+  #   delete: 'Delete {{collection}} “{{slug}}”'
+  #   uploadMedia: 'Upload “{{path}}”'
+  #   deleteMedia: 'Delete “{{path}}”'
+
+media_folder: "public/uploads/images" # ที่เก็บไฟล์ภาพที่อัปโหลดผ่าน CMS (เทียบจาก root ของ repo)
+public_folder: "/uploads/images"    # URL path ที่จะใช้แสดงภาพบนหน้าเว็บ (เทียบจาก root ของเว็บ)
+
+# Local backend (optional, for local development, requires running a proxy server)
+# local_backend: true
+
+collections:
+  - name: "infographics"
+    label: "Infographics"
+    folder: "content/infographics" # ที่เก็บไฟล์ .json หรือ .md ของ infographics
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # รูปแบบชื่อไฟล์
+    # summary: "{{title}}" # ฟิลด์ที่จะแสดงใน UI ของ CMS
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Published Date", name: "published_date", widget: "datetime" }
+      - { label: "Image", name: "image", widget: "image", media_folder: "public/uploads/infographics", public_folder: "/uploads/infographics" }
+      - { label: "Category", name: "category", widget: "string" } # อาจใช้ select widget ถ้ามีหมวดหมู่ตายตัว
+      - { label: "Tags", name: "tags", widget: "list", field: {label: "Tag", name: "tag", widget: "string"} }
+      - { label: "Summary", name: "summary", widget: "text", required: false } # ฟิลด์นี้จะถูกเติมโดย AI
+      - { label: "Full Text from OCR", name: "full_text_from_ocr", widget: "text", required: false, hint: "This field is auto-populated by OCR. Do not edit manually unless necessary." }
+# ... collections อื่นๆ เช่น articles
