@@ -1,19 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Admin from './admin/Admin';
-// ...existing imports...
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/admin/*" element={<Admin />} />
-        {/* ...route อื่นๆ */}
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+import React from 'react';
+// Import any necessary components or libraries for your admin panel
+// import AdminDashboard from './AdminDashboard';
+// import UserManagement from './UserManagement';
+// import ProductManagement from './ProductManagement';
 
 export default function Admin() {
   return (
@@ -23,4 +12,3 @@ export default function Admin() {
     </div>
   );
 }
-
