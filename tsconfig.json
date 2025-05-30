@@ -5,21 +5,21 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": true, // Changed for broader compatibility
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "bundler", // Changed to bundler for Vite
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"] // Optional: for aliased imports like @/components/*
+      "@/*": ["src/*"]
     }
   },
-  "include": ["src", "vite.config.ts"], // Include vite.config.ts
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
