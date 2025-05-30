@@ -1,29 +1,39 @@
-
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>จัดการเนื้อหา | คลังความรู้เกษตรตำบล Infographic</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
-  <!-- Include the Decap CMS script -->
+  <link rel="icon" href="/admin-favicon.svg"> <!-- Use a distinct admin favicon -->
+  
+  <!-- Netlify Identity Widget -->
+  <!-- Script will be injected by Netlify during build if Identity is enabled -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+  
+  <!-- Decap CMS script -->
   <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+  
   <style>
-    /* Optional: basic styling for the admin page if needed before CMS loads */
     body { font-family: sans-serif; margin: 0; }
     #nc-root { min-height: 100vh; }
   </style>
 </head>
 <body>
-  <!-- Initialize Decap CMS -->
-  <script>
-    // This is where you might set a global API key if needed by cms-integration.js
-    // and if process.env.API_KEY is not available through a build process for the admin panel.
-    // For example:
-    // window.process = { env: { API_KEY: 'YOUR_GEMINI_API_KEY_HERE_IF_NEEDED_CLIENT_SIDE' } };
-    // WARNING: Exposing API keys client-side is a security risk. Prefer serverless functions.
-  </script>
+  <!-- 
+    API keys should NOT be set here client-side.
+    The cms-integration.js will call a Netlify Function,
+    which securely accesses API keys from Netlify's environment variables.
+  -->
   <script src="./cms-integration.js"></script>
 </body>
 </html>
-    
