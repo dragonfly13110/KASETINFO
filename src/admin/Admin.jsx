@@ -14,3 +14,13 @@ function App() {
 }
 
 export default App;
+
+export default function Admin() {
+  return (
+    <div>
+      <h1>Admin Panel</h1>
+      <p>ยินดีต้อนรับเข้าสู่หน้า Admin. เพิ่มเนื้อหาที่คุณต้องการแสดงที่นี่.</p>
+    </div>
+  );
+}
+
