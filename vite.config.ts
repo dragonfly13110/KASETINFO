@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
+          'admin': path.resolve(__dirname, 'admin'), // alias สำหรับส่วน Admin
         }
       }
     };
